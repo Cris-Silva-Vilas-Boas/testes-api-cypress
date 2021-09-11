@@ -1,1 +1,1 @@
-# Projeto básico de testes com cypress
+# Projeto básico de testes de api rest com cypress
