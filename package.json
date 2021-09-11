@@ -1,0 +1,28 @@
+{
+  "name": "automacao-cypress",
+  "version": "1.0.0",
+  "description": "Automação com cypress",
+  "main": "index.js",
+  "dependencies": {
+    "cypress": "^3.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cris-Silva-Vilas-Boas/cypress.git"
+  },
+  "keywords": [
+    "cypress",
+    "javascript"
+  ],
+  "author": "Cristina Silva Vilas Boas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cris-Silva-Vilas-Boas/cypress/issues"
+  },
+  "homepage": "https://github.com/Cris-Silva-Vilas-Boas/cypress#readme"
+}
