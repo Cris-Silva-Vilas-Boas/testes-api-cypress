@@ -63,14 +63,16 @@ Cypress.Commands.add('resetRest', () =>{
 })
 
 Cypress.Commands.add('buscarPorNomeDeConta', (nome) =>{
-    cy.request({
-        method: 'GET',
-        url: 'https://barrigarest.wcaquino.me/contas',
-        headers: { Authorization: `JWT ${token}` },
-        qs:{
-           nome: 'Conta para alterar' 
-        }
-    }).then(name => {
-        return name;
+    cy.getToken('a@a', 'a').then(token =>{
+        cy.request({
+            method: 'GET',
+            url: 'https://barrigarest.wcaquino.me/contas',
+            headers: { Authorization: `JWT ${token}` },
+            qs:{
+               nome: nome 
+            }
+        }).then(res=>{
+            return res.body[0].id;
+        })
     })
 })

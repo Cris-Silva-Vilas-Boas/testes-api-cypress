@@ -28,16 +28,10 @@ describe('Test api', () => {
     })
 
     it('Deve editar uma conta', () =>{
-        cy.request({
-            method: 'GET',
-            url: 'https://barrigarest.wcaquino.me/contas',
-            headers: { Authorization: `JWT ${token}` },
-            qs:{
-               nome: 'Conta para alterar' 
-            }
-        }).then(res=>{
+        cy.buscarPorNomeDeConta('Conta para alterar')
+       .then(contaId => {
             cy.request({
-                url: `https://barrigarest.wcaquino.me/contas/${res.body[0].id}`,
+                url: `https://barrigarest.wcaquino.me/contas/${contaId}`,
                     method: 'PUT',
                     headers: { Authorization: `JWT ${token}` },
                     body: {
