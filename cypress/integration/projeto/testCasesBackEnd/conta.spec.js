@@ -73,5 +73,16 @@ describe('Test api', () => {
             expect(res.status).to.be.equal(200)
         })
     })
+
+    it('Deve retornar todas as contas', ()=>{
+        cy.request({
+            method: 'GET',
+            url: 'https://barrigarest.wcaquino.me/saldo',
+            headers: { Authorization: `JWT ${token}` },
+        }).then(res=>{
+            expect(res.status).to.be.equal(200);
+            expect(res.body[0].conta).to.be.equal('Conta para movimentacoes');
+        })
+    })
 })
 
