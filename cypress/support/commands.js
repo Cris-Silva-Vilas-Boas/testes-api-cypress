@@ -40,7 +40,7 @@ Cypress.Commands.add('resetApp', () =>{
 Cypress.Commands.add('getToken', (user, password) =>{
     cy.request({
         method: 'POST',
-        url: 'https://barriarest.wcaquino.meg/signin',
+        url: 'https://barriarest.wcaquino.me/signin',
         body: {
             email: user,
             redirecionar: false,
@@ -59,5 +59,18 @@ Cypress.Commands.add('resetRest', () =>{
             url: 'https://barrigarest.wcaquino.me/reset',
             headers: { Authorization: `JWT ${token}` }
         }).its('status').should('be.equal', 200);
+    })
+})
+
+Cypress.Commands.add('buscarPorNomeDeConta', (nome) =>{
+    cy.request({
+        method: 'GET',
+        url: 'https://barrigarest.wcaquino.me/contas',
+        headers: { Authorization: `JWT ${token}` },
+        qs:{
+           nome: 'Conta para alterar' 
+        }
+    }).then(name => {
+        return name;
     })
 })
