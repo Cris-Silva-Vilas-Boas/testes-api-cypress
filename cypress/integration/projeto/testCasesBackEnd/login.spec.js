@@ -1,9 +1,5 @@
 
 describe('Test functional', () => {
-    before(() => {
-       
-    })
-
     it('Fazer login', () =>{
         cy.request({
             method: 'POST',

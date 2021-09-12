@@ -36,3 +36,28 @@ Cypress.Commands.add('resetApp', () =>{
     cy.get(locator.HOME_PAGE.SETTINGS).click();
     cy.get(locator.HOME_PAGE.RESET).click();
 })
+
+Cypress.Commands.add('getToken', (user, password) =>{
+    cy.request({
+        method: 'POST',
+        url: 'https://barriarest.wcaquino.meg/signin',
+        body: {
+            email: user,
+            redirecionar: false,
+            senha: password
+        }
+    }).its('body.token').should('not.be.empty')
+    .then(token =>{
+        return token
+    })
+})
+
+Cypress.Commands.add('resetRest', () =>{
+    cy.getToken('a@a', 'a').then(token =>{
+        cy.request({
+            method: 'GET',
+            url: 'https://barrigarest.wcaquino.me/reset',
+            headers: { Authorization: `JWT ${token}` }
+        }).its('status').should('be.equal', 200);
+    })
+})
